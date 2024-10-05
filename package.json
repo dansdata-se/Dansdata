@@ -1,0 +1,46 @@
+{
+  "name": "dansdata",
+  "description": "Monorepo for the Dansdata open information platform for Swedish social dancing.",
+  "private": "true",
+  "scripts": {
+    "prepare": "just init_repo 0",
+    "test": "just test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dansdata-se/Dansdata.git"
+  },
+  "keywords": [
+    "dansdata",
+    "dance",
+    "information",
+    "bugg",
+    "foxtrot",
+    "api",
+    "sweden"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "Felix Zedén Yverås",
+      "email": "felix@fzy.se",
+      "url": "https://fzy.se"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/dansdata-se/Dansdata/issues"
+  },
+  "homepage": "https://dansdata.se/",
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@tsconfig/recommended": "^1.0.7",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-sh": "^0.14.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}
