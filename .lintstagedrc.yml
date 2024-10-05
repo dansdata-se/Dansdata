@@ -1,2 +1,2 @@
-"!(justfile|.justfile)*": prettier --write --ignore-unknown
+"!(justfile|.justfile)": prettier --write --ignore-unknown
 "{justfile,.justfile}": just --unstable --fmt --justfile
