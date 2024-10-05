@@ -4,6 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
+      - ".github/workflows/backstage-*"
       - "components/api/backstage/**"
 
 defaults:
@@ -44,3 +45,5 @@ jobs:
 
       - name: Generate and submit dependency graph
         uses: gradle/actions/dependency-submission@v4
+        with:
+          build-root-directory: components/api/backstage
