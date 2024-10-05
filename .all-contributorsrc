@@ -1,4 +1,24 @@
 {
   "projectName": "Dansdata",
-  "projectOwner": "dansdata-se"
+  "projectOwner": "dansdata-se",
+  "files": [
+    "README.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "FelixZY",
+      "name": "Felix Zedén Yverås",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2656517?v=4",
+      "profile": "https://fzy.se",
+      "contributions": [
+        "code",
+        "design",
+        "content",
+        "ideas"
+      ]
+    }
+  ]
 }
