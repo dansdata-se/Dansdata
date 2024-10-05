@@ -2,6 +2,13 @@
 
 .gitignore
 
+gradlew
+gradlew.bat
+gradle/wrapper
+
+# managed by the all contributors bot
+.all-contributorsrc
+
 # prettier-plugin-sh breaks certain Dockerfile features:
 # https://github.com/un-ts/prettier/issues/339
 Dockerfile
