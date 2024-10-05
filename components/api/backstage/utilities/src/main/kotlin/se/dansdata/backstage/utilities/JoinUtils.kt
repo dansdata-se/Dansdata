@@ -2,6 +2,7 @@ package se.dansdata.backstage.utilities
 
 import se.dansdata.backstage.list.LinkedList
 
+@Suppress("UtilityClassWithPublicConstructor")
 class JoinUtils {
     companion object {
         fun join(source: LinkedList): String {

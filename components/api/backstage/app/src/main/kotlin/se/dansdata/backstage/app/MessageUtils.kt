@@ -1,7 +1,8 @@
 package se.dansdata.backstage.app
 
+@Suppress("UtilityClassWithPublicConstructor")
 class MessageUtils {
     companion object {
-        fun getMessage(): String = "Hello      World!"
+        @Suppress("FunctionOnlyReturningConstant") fun getMessage(): String = "Hello      World!"
     }
 }
