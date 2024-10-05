@@ -1,6 +1,9 @@
+import com.ncorti.ktfmt.gradle.tasks.*
+
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm")
+    id("com.ncorti.ktfmt.gradle")
 }
 
 repositories {
@@ -30,4 +33,15 @@ java {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+ktfmt {
+    kotlinLangStyle()
+    removeUnusedImports.set(true)
+    manageTrailingCommas.set(true)
+}
+
+tasks.register<KtfmtFormatTask>("ktfmtPrecommit") {
+    source = project.fileTree(rootDir)
+    include("**/*.kt")
 }
