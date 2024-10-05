@@ -1,16 +1,17 @@
 package se.dansdata.backstage.list
 
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.Assertions.*
-
 class LinkedListTest {
-    @Test fun testConstructor() {
+    @Test
+    fun testConstructor() {
         val list = LinkedList()
         assertEquals(0, list.size())
     }
 
-    @Test fun testAdd() {
+    @Test
+    fun testAdd() {
         val list = LinkedList()
 
         list.add("one")
@@ -22,7 +23,8 @@ class LinkedListTest {
         assertEquals("two", list.get(1))
     }
 
-    @Test fun testRemove() {
+    @Test
+    fun testRemove() {
         val list = LinkedList()
 
         list.add("one")
@@ -36,7 +38,8 @@ class LinkedListTest {
         assertEquals(0, list.size())
     }
 
-    @Test fun testRemoveMissing() {
+    @Test
+    fun testRemoveMissing() {
         val list = LinkedList()
 
         list.add("one")

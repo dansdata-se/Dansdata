@@ -1,8 +1,7 @@
 package se.dansdata.backstage.app
 
-import se.dansdata.backstage.utilities.StringUtils
-
 import org.apache.commons.text.WordUtils
+import se.dansdata.backstage.utilities.StringUtils
 
 fun main() {
     val tokens = StringUtils.split(MessageUtils.getMessage())
