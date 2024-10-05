@@ -1,0 +1,9 @@
+[versions]
+detekt-gradle-plugin = "1.23.7"
+kotlin-gradle-plugin = "1.9.22"
+ktfmt-gradle-plugin = "0.20.1"
+
+[libraries]
+detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt-gradle-plugin" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-gradle-plugin" }
+ktfmt-gradle-plugin = { module = "com.ncorti.ktfmt.gradle:plugin", version.ref = "ktfmt-gradle-plugin" }
