@@ -1,9 +1,12 @@
 import com.ncorti.ktfmt.gradle.tasks.*
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm")
     id("com.ncorti.ktfmt.gradle")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 repositories {
@@ -45,3 +48,16 @@ tasks.register<KtfmtFormatTask>("ktfmtPrecommit") {
     source = project.fileTree(rootDir)
     include("**/*.kt")
 }
+
+detekt {
+    buildUponDefaultConfig = true
+}
+
+tasks.withType<Detekt>().configureEach {
+    jvmTarget = "21"
+}
+
+tasks.withType<DetektCreateBaselineTask>().configureEach {
+    jvmTarget = "21"
+}
+

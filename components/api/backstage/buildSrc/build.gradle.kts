@@ -11,4 +11,5 @@ repositories {
 dependencies {
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.ktfmt.gradle.plugin)
+    implementation(libs.detekt.gradle.plugin)
 }
