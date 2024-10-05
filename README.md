@@ -60,7 +60,7 @@ Feedback is always welcome! Please use our [contact form](https://dansdata.youtr
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://fzy.se"><img src="https://avatars.githubusercontent.com/u/2656517?v=4?s=100" width="100px;" alt="Felix Zedén Yverås"/><br /><sub><b>Felix Zedén Yverås</b></sub></a><br /><a href="#code-FelixZY" title="Code">💻</a> <a href="#design-FelixZY" title="Design">🎨</a> <a href="#content-FelixZY" title="Content">🖋</a> <a href="#ideas-FelixZY" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://fzy.se"><img src="https://avatars.githubusercontent.com/u/2656517?v=4?s=100" width="100px;" alt="Felix Zedén Yverås"/><br /><sub><b>Felix Zedén Yverås</b></sub></a><br /><a href="#code-FelixZY" title="Code">💻</a> <a href="#design-FelixZY" title="Design">🎨</a> <a href="#content-FelixZY" title="Content">🖋</a> <a href="#ideas-FelixZY" title="Ideas, Planning, & Feedback">🤔</a> <a href="#audio-FelixZY" title="Audio">🔊</a></td>
     </tr>
   </tbody>
 </table>
