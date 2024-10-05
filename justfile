@@ -5,6 +5,8 @@
 export GIT_SHA := `git rev-parse HEAD`
 export GIT_REF := `git rev-parse --abbrev-ref HEAD`
 
+mod backstage "components/api/backstage/_.justfile"
+
 [private]
 default: help
 
