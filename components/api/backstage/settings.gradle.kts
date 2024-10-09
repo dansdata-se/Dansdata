@@ -4,4 +4,14 @@ plugins {
 }
 
 rootProject.name = "backstage"
-include("app", "list", "utilities")
+
+include(
+    "app",
+    "domain:events",
+    "domain:images",
+    "domain:locations",
+    "domain:profiles",
+    "domain:tickets",
+    "domain:translations",
+    "framework",
+)

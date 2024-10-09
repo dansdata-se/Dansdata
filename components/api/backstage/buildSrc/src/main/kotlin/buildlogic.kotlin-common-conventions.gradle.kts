@@ -18,11 +18,6 @@ repositories {
 val libs = the<LibrariesForLibs>()
 
 dependencies {
-    constraints {
-        // Define dependency versions as constraints
-        implementation("org.apache.commons:commons-text:1.11.0")
-    }
-
     implementation(libs.logback.core)
     implementation(libs.logback.classic)
 

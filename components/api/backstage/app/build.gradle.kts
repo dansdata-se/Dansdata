@@ -1,10 +1,13 @@
-plugins {
-    id("buildlogic.kotlin-application-conventions")
-}
+plugins { id("buildlogic.kotlin-application-conventions") }
 
 dependencies {
-    implementation("org.apache.commons:commons-text")
-    implementation(project(":utilities"))
+    implementation(project(":framework"))
+    implementation(project(":domain:events"))
+    implementation(project(":domain:images"))
+    implementation(project(":domain:locations"))
+    implementation(project(":domain:profiles"))
+    implementation(project(":domain:tickets"))
+    implementation(project(":domain:translations"))
 }
 
 application {
