@@ -1,4 +1,4 @@
-import com.ncorti.ktfmt.gradle.tasks.*
+import com.ncorti.ktfmt.gradle.tasks.KtfmtFormatTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 
