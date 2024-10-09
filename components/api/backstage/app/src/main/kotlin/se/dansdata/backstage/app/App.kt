@@ -1,10 +1,8 @@
 package se.dansdata.backstage.app
 
-import org.apache.commons.text.WordUtils
-import se.dansdata.backstage.utilities.StringUtils
+import org.slf4j.LoggerFactory
 
 fun main() {
-    val tokens = StringUtils.split(MessageUtils.getMessage())
-    val result = StringUtils.join(tokens)
-    println(WordUtils.capitalize(result))
+    val logger = LoggerFactory.getLogger("se.dansdata.backstage.app.AppKt")
+    logger.info("Backstage initializing...")
 }

@@ -1,6 +1,7 @@
 import com.ncorti.ktfmt.gradle.tasks.KtfmtFormatTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
@@ -14,11 +15,16 @@ repositories {
     mavenCentral()
 }
 
+val libs = the<LibrariesForLibs>()
+
 dependencies {
     constraints {
         // Define dependency versions as constraints
         implementation("org.apache.commons:commons-text:1.11.0")
     }
+
+    implementation(libs.logback.core)
+    implementation(libs.logback.classic)
 
     // Use JUnit Jupiter for testing.
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
