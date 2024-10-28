@@ -1,0 +1,68 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <JetCodeStyleSettings>
+      <option name="ALLOW_TRAILING_COMMA" value="true" />
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </JetCodeStyleSettings>
+    <ScalaCodeStyleSettings>
+      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
+    </ScalaCodeStyleSettings>
+    <SqlCodeStyleSettings version="7">
+      <option name="KEYWORD_CASE" value="2" />
+      <option name="TYPE_CASE" value="3" />
+      <option name="CUSTOM_TYPE_CASE" value="0" />
+      <option name="ALIAS_CASE" value="4" />
+      <option name="ORIGINAL_CASE" value="true" />
+      <option name="QUERY_SECTION_1ST_WORD_ALIGN" value="2" />
+      <option name="QUERY_EL_LINE" value="101" />
+      <option name="QUERY_EL_COMMA" value="2" />
+      <option name="QUERY_IN_ONE_STRING" value="1" />
+      <option name="QUERY_ALIGN_ELEMENTS" value="false" />
+      <option name="QUERY_ALIGN_LINE_COMMENTS" value="false" />
+      <option name="SUBQUERY_OPENING" value="1" />
+      <option name="SUBQUERY_CONTENT" value="3" />
+      <option name="SUBQUERY_CLOSING" value="4" />
+      <option name="SUBQUERY_PAR_SPACE_BEFORE" value="1" />
+      <option name="INSERT_INTO_NL" value="2" />
+      <option name="INSERT_OPENING" value="4" />
+      <option name="INSERT_CONTENT" value="2" />
+      <option name="INSERT_CLOSING" value="3" />
+      <option name="INSERT_TABLE_EL_LINE" value="1" />
+      <option name="INSERT_VALUES_EL_LINE" value="101" />
+      <option name="INSERT_EL_WRAP" value="1" />
+      <option name="SET_ALIGN_EQUAL_SIGN" value="false" />
+      <option name="SELECT_USE_AS_WORD" value="1" />
+      <option name="SELECT_ALIGN_AS" value="false" />
+      <option name="FROM_WRAP_ON" value="true" />
+      <option name="FROM_PLACE_ON" value="12" />
+      <option name="WHERE_EL_BOUND" value="0" />
+      <option name="ORDER_EL_WRAP" value="1" />
+      <option name="TABLE_OPENING" value="1" />
+      <option name="TABLE_CONTENT" value="2" />
+      <option name="TABLE_CLOSING" value="2" />
+      <option name="TABLE_TYPES_ALIGN" value="false" />
+      <option name="TABLE_DEFAULTS_ALIGN" value="false" />
+      <option name="TABLE_NULLABILITIES_ALIGN" value="false" />
+      <option name="TABLE_ALTER_INSTRUCTION_ALIGN" value="false" />
+      <option name="TABLE_ALTER_ITEM_WRAP" value="1" />
+      <option name="TABLE_ALTER_ITEM_ALIGN" value="false" />
+      <option name="CONSTRAINT_WRAP_2" value="true" />
+      <option name="CONSTRAINT_WRAP_3" value="true" />
+      <option name="CONSTRAINT_WRAP_4" value="true" />
+      <option name="POST_OPT_WRAP_1" value="true" />
+      <option name="POST_OPT_ALIGN" value="false" />
+      <option name="VIEW_INDENT_QUERY" value="true" />
+      <option name="EXPR_BINARY_OP_ALIGN" value="false" />
+      <option name="EXPR_CASE_THEN_WRAP" value="true" />
+      <option name="EXPR_CASE_END" value="1" />
+      <option name="FOREIGN_KEY_NAME_TEMPLATE" value="{table}_{columns}_{ref_table}_{ref_columns}_fk" />
+    </SqlCodeStyleSettings>
+    <codeStyleSettings language="SQL">
+      <option name="KEEP_LINE_BREAKS" value="false" />
+      <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
+    </codeStyleSettings>
+    <codeStyleSettings language="kotlin">
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </codeStyleSettings>
+  </code_scheme>
+</component>

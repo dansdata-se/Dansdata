@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="165c499f-226f-4ca9-b264-998fd50b0ca4" />
+          <option name="name" value="Local Development (DDL)" />
+          <option name="dbmsName" value="POSTGRES" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/../ddl" />
+            </array>
+          </option>
+          <option name="outLayout" value="File per object by schema and database.groovy" />
+          <option name="scriptOptions">
+            <map>
+              <entry key="CreateIfNotExists" value="1" />
+              <entry key="CreateOrReplace" value="1" />
+              <entry key="UseSurrogates" value="1" />
+              <entry key="UserGrants" value="1" />
+            </map>
+          </option>
+          <option name="scopes">
+            <map>
+              <entry key="$PROJECT_DIR$/../ddl/dansdata" value="dansdata" />
+            </map>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
