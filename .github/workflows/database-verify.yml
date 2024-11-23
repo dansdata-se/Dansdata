@@ -1,0 +1,39 @@
+name: Database / Verify
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/database-*"
+      - "components/api/database/**"
+  pull_request:
+    paths:
+      - ".github/workflows/database-*"
+      - "components/api/database/**"
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: components/api/database/tests
+
+jobs:
+  build:
+    name: "Test and Build"
+    runs-on: ubuntu-latest
+    # Local testing has proved that there are certain errors that can cause
+    # Testcontainers to stall. Make sure the job is aborted after a reasonable
+    # time in such cases!
+    timeout-minutes: 20
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: "gradle"
+
+      - run: ./gradlew :check
