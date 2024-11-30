@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS translations_private.ext_refs (
-    id INTEGER GENERATED ALWAYS AS IDENTITY
-        CONSTRAINT external_refs_pk
-            PRIMARY KEY,
-    uri TEXT NOT NULL
-        UNIQUE
-        CHECK (uri LIKE 'dansdata.entity://%')
+  id INTEGER GENERATED ALWAYS AS IDENTITY
+    CONSTRAINT external_refs_pk
+      PRIMARY KEY,
+  uri TEXT NOT NULL
+    UNIQUE
+    CHECK (uri LIKE 'dansdata.entity://%')
 );
 
 COMMENT ON TABLE translations_private.ext_refs IS 'References to externally owned entities.';
@@ -17,4 +17,4 @@ The expected protocol is `dansdata.entity://`';
 
 
 ALTER TABLE translations_private.ext_refs
-    OWNER TO translations_owner;
+  OWNER TO translations_owner;
