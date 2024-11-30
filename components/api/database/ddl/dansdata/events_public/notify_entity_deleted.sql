@@ -1,5 +1,5 @@
 CREATE OR REPLACE PROCEDURE events_public.notify_entity_deleted(entity_uri TEXT)
-    LANGUAGE sql AS
+  LANGUAGE sql AS
 $$
 SELECT pg_notify('dansdata_events_v1'::TEXT, JSON_BUILD_OBJECT('type', 'delete', 'entityUri', entity_uri)::TEXT);
 $$;
