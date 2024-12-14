@@ -6,6 +6,7 @@ use axum::routing::get;
 use axum::{Json, Router};
 use serde_json::json;
 use tower::ServiceBuilder;
+use tower_http::request_id::{MakeRequestUuid, PropagateRequestIdLayer, SetRequestIdLayer};
 use tower_http::trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer};
 use tower_http::LatencyUnit;
 use tracing::{info, Level};
@@ -30,16 +31,19 @@ async fn main() {
             get(|| async { Json(json!({"message": "Hello, World!"})) }),
         )
         .layer(
-            ServiceBuilder::new().layer(
-                TraceLayer::new_for_http()
-                    .make_span_with(DefaultMakeSpan::new().include_headers(true))
-                    .on_request(DefaultOnRequest::new().level(Level::INFO))
-                    .on_response(
-                        DefaultOnResponse::new()
-                            .level(Level::INFO)
-                            .latency_unit(LatencyUnit::Micros),
-                    ),
-            ),
+            ServiceBuilder::new()
+                .layer(SetRequestIdLayer::x_request_id(MakeRequestUuid::default()))
+                .layer(PropagateRequestIdLayer::x_request_id())
+                .layer(
+                    TraceLayer::new_for_http()
+                        .make_span_with(DefaultMakeSpan::new().include_headers(true))
+                        .on_request(DefaultOnRequest::new().level(Level::INFO))
+                        .on_response(
+                            DefaultOnResponse::new()
+                                .level(Level::INFO)
+                                .latency_unit(LatencyUnit::Micros),
+                        ),
+                ),
         );
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:8080")
