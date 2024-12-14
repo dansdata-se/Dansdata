@@ -2,11 +2,13 @@ mod built_info;
 mod logging;
 
 use crate::logging::init_logging;
+use axum::http::header;
 use axum::routing::get;
 use axum::{Json, Router};
 use serde_json::json;
 use tower::ServiceBuilder;
 use tower_http::request_id::{MakeRequestUuid, PropagateRequestIdLayer, SetRequestIdLayer};
+use tower_http::sensitive_headers::SetSensitiveRequestHeadersLayer;
 use tower_http::trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer};
 use tower_http::LatencyUnit;
 use tracing::{info, Level};
@@ -32,6 +34,10 @@ async fn main() {
         )
         .layer(
             ServiceBuilder::new()
+                .layer(SetSensitiveRequestHeadersLayer::new(vec![
+                    header::AUTHORIZATION,
+                    header::COOKIE,
+                ]))
                 .layer(SetRequestIdLayer::x_request_id(MakeRequestUuid::default()))
                 .layer(PropagateRequestIdLayer::x_request_id())
                 .layer(
