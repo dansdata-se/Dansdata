@@ -7,6 +7,7 @@ use axum::routing::get;
 use axum::{Json, Router};
 use serde_json::json;
 use tower::ServiceBuilder;
+use tower_http::catch_panic::CatchPanicLayer;
 use tower_http::request_id::{MakeRequestUuid, PropagateRequestIdLayer, SetRequestIdLayer};
 use tower_http::sensitive_headers::SetSensitiveRequestHeadersLayer;
 use tower_http::trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer};
@@ -40,6 +41,7 @@ async fn main() {
                 ]))
                 .layer(SetRequestIdLayer::x_request_id(MakeRequestUuid::default()))
                 .layer(PropagateRequestIdLayer::x_request_id())
+                .layer(CatchPanicLayer::new())
                 .layer(
                     TraceLayer::new_for_http()
                         .make_span_with(DefaultMakeSpan::new().include_headers(true))
