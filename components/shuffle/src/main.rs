@@ -6,11 +6,13 @@ use axum::http::header;
 use axum::routing::get;
 use axum::{Json, Router};
 use serde_json::json;
+use std::time::Duration;
 use tower::ServiceBuilder;
 use tower_http::catch_panic::CatchPanicLayer;
 use tower_http::compression::CompressionLayer;
 use tower_http::request_id::{MakeRequestUuid, PropagateRequestIdLayer, SetRequestIdLayer};
 use tower_http::sensitive_headers::SetSensitiveRequestHeadersLayer;
+use tower_http::timeout::TimeoutLayer;
 use tower_http::trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer};
 use tower_http::LatencyUnit;
 use tracing::{info, Level};
@@ -43,6 +45,7 @@ async fn main() {
                 .layer(SetRequestIdLayer::x_request_id(MakeRequestUuid::default()))
                 .layer(PropagateRequestIdLayer::x_request_id())
                 .layer(CompressionLayer::new())
+                .layer(TimeoutLayer::new(Duration::from_secs(10)))
                 .layer(CatchPanicLayer::new())
                 .layer(
                     TraceLayer::new_for_http()
