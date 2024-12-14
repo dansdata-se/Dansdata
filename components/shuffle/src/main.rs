@@ -15,7 +15,7 @@ use tower_http::sensitive_headers::SetSensitiveRequestHeadersLayer;
 use tower_http::timeout::TimeoutLayer;
 use tower_http::trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer};
 use tower_http::LatencyUnit;
-use tracing::{info, Level};
+use tracing::{error, info, Level};
 
 #[tokio::main]
 async fn main() {
@@ -59,8 +59,15 @@ async fn main() {
                 ),
         );
 
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:8080")
-        .await
-        .unwrap();
+    let bind_to = "127.0.0.1:8080";
+    let listener = match tokio::net::TcpListener::bind(bind_to).await {
+        Ok(listener) => listener,
+        Err(e) => {
+            error!("Failed to bind to {}: {}", bind_to, e);
+            return;
+        }
+    };
+
+    info!("Listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await.unwrap();
 }
