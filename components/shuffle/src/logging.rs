@@ -10,6 +10,7 @@ use opentelemetry_sdk::{
 use opentelemetry_semantic_conventions::{attribute, SCHEMA_URL};
 use tracing::Level;
 use tracing_opentelemetry::{MetricsLayer, OpenTelemetryLayer};
+use tracing_subscriber::fmt::format::FmtSpan;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
 
@@ -37,7 +38,7 @@ pub fn init_logging() -> LoggingGuard {
         .with(tracing_subscriber::filter::LevelFilter::from_level(
             Level::DEBUG,
         ))
-        .with(tracing_subscriber::fmt::layer())
+        .with(tracing_subscriber::fmt::layer().with_span_events(FmtSpan::FULL))
         .with(MetricsLayer::new(meter_provider.clone()))
         .with(OpenTelemetryLayer::new(
             tracer_provider.tracer(built_info::PKG_NAME),
