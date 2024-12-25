@@ -4,10 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-async-graphql = { version = "7.0.13", features = ["graphiql", "playground", "tracing", "opentelemetry"] }
+async-graphql = { version = "7.0.13", features = ["graphiql", "playground", "tracing", "opentelemetry", "chrono"] }
 async-graphql-axum = "7.0.13"
 axum = "0.7.9"
 built = { version = "0.7.5", features = ["chrono"] }
+chrono = "0.4.39"
 opentelemetry = "0.27.1"
 opentelemetry_sdk = { version = "0.27.1", features = ["rt-tokio"] }
 opentelemetry-otlp = { version = "0.27.0", features = ["trace", "metrics", "logs", "serialize", "tonic"] }
@@ -21,6 +22,7 @@ tracing-subscriber = "0.3.19"
 serde = { version = "1.0.216", features = ["derive"] }
 serde_json = "1.0.133"
 tokio = { version = "1.42.0", features = ["full"] }
+uuid = { version = "1.11.0", features = ["v4"] }
 
 [dev-dependencies]
 assert-json-diff = "2.0.2"

@@ -1,4 +1,5 @@
 mod built_info;
+mod domain;
 mod graphql;
 mod logging;
 mod server;
