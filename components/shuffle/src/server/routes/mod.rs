@@ -1,3 +1,5 @@
+mod graphql;
+
 use axum::response::IntoResponse;
 use axum::routing::get;
 use axum::{Json, Router};
@@ -13,5 +15,7 @@ async fn get_handler() -> MethodHandler<Json<Value>> {
 
 #[instrument(level = "trace", skip_all)]
 pub(crate) fn configure() -> Router {
-    Router::new().route("/", get(get_handler))
+    Router::new()
+        .route("/", get(get_handler))
+        .nest("/graphql", graphql::configure())
 }
