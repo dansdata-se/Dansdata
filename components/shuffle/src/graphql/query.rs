@@ -1,13 +1,8 @@
-use async_graphql::Object;
+use crate::graphql::band::BandQueries;
+use async_graphql::{MergedObject, Object};
 
-pub struct Query;
-
-#[Object]
-impl Query {
-    pub async fn hello_world(&self) -> &'static str {
-        "hello world"
-    }
-}
+#[derive(MergedObject, Default)]
+pub struct Query(BandQueries);
 
 #[cfg(test)]
 mod tests {
@@ -20,7 +15,7 @@ mod tests {
     #[tokio::test]
     async fn hello_world() {
         assert_gql!(
-            Schema::build(Query, EmptyMutation, EmptySubscription).finish(),
+            Schema::build(Query::default(), EmptyMutation, EmptySubscription).finish(),
             "{ helloWorld }"
         )
         .has_no_errors()

@@ -1,3 +1,4 @@
+use crate::domain::BandRepository;
 use crate::graphql::{build_schema, DansdataSchema};
 use crate::server::routes::MethodHandler;
 use async_graphql::http::{Credentials, GraphiQLSource};
@@ -6,6 +7,7 @@ use axum::http::Method;
 use axum::response::Html;
 use axum::routing::get;
 use axum::Router;
+use std::sync::Arc;
 use tower_http::cors::{Any, CorsLayer};
 use tracing::instrument;
 
@@ -20,8 +22,9 @@ async fn get_handler() -> MethodHandler<Html<String>> {
     ))
 }
 
-fn build_post_service() -> GraphQL<DansdataSchema> {
+fn build_post_service(repository: Box<dyn BandRepository>) -> GraphQL<DansdataSchema> {
     let schema = build_schema()
+        .data::<Arc<dyn BandRepository>>(Arc::from(repository))
         .limit_depth(5)
         .limit_complexity(50)
         .limit_recursive_depth(5)
@@ -31,9 +34,12 @@ fn build_post_service() -> GraphQL<DansdataSchema> {
 }
 
 #[instrument(level = "trace", skip_all)]
-pub(crate) fn configure() -> Router {
+pub(crate) fn configure(repository: Box<dyn BandRepository>) -> Router {
     Router::new()
-        .route("/", get(get_handler).post_service(build_post_service()))
+        .route(
+            "/",
+            get(get_handler).post_service(build_post_service(repository)),
+        )
         .layer(
             CorsLayer::new()
                 .allow_origin(Any)

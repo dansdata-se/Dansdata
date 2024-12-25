@@ -1,0 +1,5 @@
+DROP SCHEMA IF EXISTS "dansdata" CASCADE;
+
+CREATE SCHEMA IF NOT EXISTS "dansdata";
+
+GRANT USAGE ON SCHEMA "dansdata" TO public;

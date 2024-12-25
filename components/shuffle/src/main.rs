@@ -2,10 +2,14 @@ mod built_info;
 mod domain;
 mod graphql;
 mod logging;
+mod persistence;
 mod server;
 
+use crate::domain::BandRepository;
 use crate::logging::init_logging;
+use crate::persistence::BandSqlRepository;
 use crate::server::Server;
+use sqlx::PgPool;
 use tracing::info;
 
 #[tokio::main]
@@ -22,7 +26,11 @@ async fn main() {
         built_info::TARGET,
     );
 
-    Server::new().serve("127.0.0.1:8080").await;
-
+    let pool = PgPool::connect("postgresql://postgres:mysecretpassword@localhost:5432/postgres")
+        .await
+        .expect("Failed to connect to database");
+    Server::new(Box::new(BandSqlRepository::new(pool)) as Box<dyn BandRepository>)
+        .serve("127.0.0.1:8080")
+        .await;
     info!("Shutting down...");
 }

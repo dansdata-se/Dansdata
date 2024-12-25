@@ -11,5 +11,5 @@ pub trait VenueNode {
 }
 
 pub trait VenueEdge {
-    fn events(&self) -> Vec<impl EventNode>;
+    async fn events(&self) -> Vec<impl EventNode>;
 }

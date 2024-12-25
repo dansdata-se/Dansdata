@@ -1,6 +1,7 @@
 mod api_errors;
 mod routes;
 
+use crate::domain::BandRepository;
 use crate::server::api_errors::{MethodNotAllowedError, NotFoundError, UnknownInternalServerError};
 use axum::http::{header, Response};
 use axum::response::IntoResponse;
@@ -23,10 +24,10 @@ pub struct Server {
 }
 
 impl Server {
-    pub fn new() -> Self {
+    pub fn new(band_repository: Box<dyn BandRepository>) -> Self {
         Self {
             router: Router::new()
-                .nest("/", routes::configure())
+                .nest("/", routes::configure(band_repository))
                 .method_not_allowed_fallback(|| async { MethodNotAllowedError::new() })
                 .fallback(|| async { NotFoundError::new() })
                 .layer(
