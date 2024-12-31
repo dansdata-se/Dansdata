@@ -1,7 +1,0 @@
-config:
-  validation: true
-  warningsAsErrors: false
-
-naming:
-  PackageNaming:
-    active: false

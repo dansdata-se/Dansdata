@@ -1,0 +1,63 @@
+name: dansdata
+
+services:
+  shuffle-api:
+    image: dansdata/shuffle:dev
+    pull_policy: never
+    restart: always
+    networks:
+      dansdata-net:
+        aliases:
+          - shuffle
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME_FILE: /run/secrets/db_name
+      DB_MIGRATION_USER_FILE: /run/secrets/db_owner_user
+      DB_MIGRATION_PASSWORD_FILE: /run/secrets/db_owner_password
+      DB_APP_SHUFFLE_USER_FILE: /run/secrets/db_app_shuffle_user
+      DB_APP_SHUFFLE_PASSWORD_FILE: /run/secrets/db_app_shuffle_password
+
+  db:
+    image: dansdata/db:dev
+    pull_policy: never
+    restart: always
+    networks:
+      dansdata-net:
+        aliases:
+          - db
+    environment:
+      DB_NAME_FILE: /run/secrets/db_name
+      DBMS_OWNER_USER_FILE: /run/secrets/dbms_owner_user
+      DBMS_OWNER_PASSWORD_FILE: /run/secrets/dbms_owner_password
+      DB_OWNER_USER_FILE: /run/secrets/db_owner_user
+      DB_OWNER_PASSWORD_FILE: /run/secrets/db_owner_password
+      DB_APP_SHUFFLE_USER_FILE: /run/secrets/db_app_shuffle_user
+      DB_APP_SHUFFLE_PASSWORD_FILE: /run/secrets/db_app_shuffle_password
+
+      # Postgres default variables
+      POSTGRES_USER_FILE: /run/secrets/dbms_owner_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/dbms_owner_password
+      POSTGRES_DB: "postgres"
+
+networks:
+  dansdata-net:
+
+secrets:
+  dbms_owner_user:
+    environment: DBMS_OWNER_USER
+  dbms_owner_password:
+    environment: DBMS_OWNER_PASSWORD
+  db_owner_user:
+    environment: DB_OWNER_USER
+  db_owner_password:
+    environment: DB_OWNER_PASSWORD
+  db_app_shuffle_user:
+    environment: DB_APP_SHUFFLE_USER
+  db_app_shuffle_password:
+    environment: DB_APP_SHUFFLE_PASSWORD
+  db_name:
+    environment: DB_NAME

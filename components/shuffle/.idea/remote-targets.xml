@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="shuffle-api" type="docker-compose" uuid="23a56ef1-0d72-4017-8187-fb5479b9ec82">
+        <config>
+          <option name="targetPlatform">
+            <TargetPlatform />
+          </option>
+          <option name="configurationFiles">
+            <list>
+              <option value="$PROJECT_DIR$/../../infra/docker/docker-compose.yml" />
+              <option value="$PROJECT_DIR$/../../infra/docker/docker-compose.shuffle.dev.yml" />
+            </list>
+          </option>
+          <option name="envs">
+            <map>
+              <entry key="DEV_HOST_GROUP_ID" value="1000" />
+              <entry key="DEV_HOST_USER_ID" value="1000" />
+            </map>
+          </option>
+          <option name="projectName" value="dansdata" />
+          <option name="serviceName" value="shuffle-api" />
+        </config>
+        <ContributedStateBase type="RsLanguageRuntime">
+          <config />
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>

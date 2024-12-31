@@ -1,0 +1,16 @@
+services:
+  shuffle-api:
+    build:
+      context: ../../components/shuffle
+      dockerfile: release.Dockerfile
+      tags:
+        - dansdata/shuffle:latest
+    pull_policy: build
+
+  db:
+    build:
+      context: ../../components/db
+      dockerfile: Dockerfile
+      tags:
+        - dansdata/db:latest
+    pull_policy: build

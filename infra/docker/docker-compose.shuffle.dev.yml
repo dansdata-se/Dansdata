@@ -1,0 +1,11 @@
+services:
+  shuffle-api:
+    build:
+      context: ../../components/shuffle
+      dockerfile: dev.Dockerfile
+      tags:
+        - dansdata/shuffle:dev
+    pull_policy: build
+    user: "${DEV_HOST_USER_ID}:${DEV_HOST_GROUP_ID}"
+    ports:
+      - "8080"

@@ -1,0 +1,53 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Start Compose Cluster" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <deployment type="docker-compose.yml">
+      <settings>
+        <option name="envFilePath" value="" />
+        <option name="envVars">
+          <list>
+            <DockerEnvVarImpl>
+              <option name="name" value="DB_APP_SHUFFLE_PASSWORD" />
+              <option name="value" value="app-shuffle-pwd" />
+            </DockerEnvVarImpl>
+            <DockerEnvVarImpl>
+              <option name="name" value="DB_APP_SHUFFLE_USER" />
+              <option name="value" value="app-shuffle" />
+            </DockerEnvVarImpl>
+            <DockerEnvVarImpl>
+              <option name="name" value="DB_NAME" />
+              <option name="value" value="dansdata" />
+            </DockerEnvVarImpl>
+            <DockerEnvVarImpl>
+              <option name="name" value="DB_OWNER_PASSWORD" />
+              <option name="value" value="dansdata-pwd" />
+            </DockerEnvVarImpl>
+            <DockerEnvVarImpl>
+              <option name="name" value="DB_OWNER_USER" />
+              <option name="value" value="dansdata" />
+            </DockerEnvVarImpl>
+            <DockerEnvVarImpl>
+              <option name="name" value="DBMS_OWNER_PASSWORD" />
+              <option name="value" value="postgres-pwd" />
+            </DockerEnvVarImpl>
+            <DockerEnvVarImpl>
+              <option name="name" value="DBMS_OWNER_USER" />
+              <option name="value" value="postgres" />
+            </DockerEnvVarImpl>
+          </list>
+        </option>
+        <option name="secondarySourceFiles">
+          <list>
+            <option value="../../infra/docker/docker-compose.shuffle.dev.yml" />
+          </list>
+        </option>
+        <option name="services">
+          <list>
+            <option value="db" />
+          </list>
+        </option>
+        <option name="sourceFilePath" value="../../infra/docker/docker-compose.yml" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>

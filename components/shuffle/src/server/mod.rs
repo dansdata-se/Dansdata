@@ -2,6 +2,7 @@ mod api_errors;
 mod routes;
 
 use crate::domain::BandRepository;
+use crate::logging::format_panic;
 use crate::server::api_errors::{MethodNotAllowedError, NotFoundError, UnknownInternalServerError};
 use axum::http::{header, Response};
 use axum::response::IntoResponse;
@@ -40,19 +41,11 @@ impl Server {
                         .layer(PropagateRequestIdLayer::x_request_id())
                         .layer(CompressionLayer::new())
                         .layer(TimeoutLayer::new(Duration::from_secs(10)))
-                        .layer(CatchPanicLayer::custom(|err: Box<dyn Any + Send + 'static>| -> Response<_> {
-                            if let Some(s) = err.downcast_ref::<String>() {
-                                error!("Service panicked: {}", s);
-                            } else if let Some(s) = err.downcast_ref::<&str>() {
-                                error!("Service panicked: {}", s);
-                            } else {
-                                error!(
-                                    "Service panicked but `CatchPanic` was unable to downcast the panic info"
-                                );
-                            };
-
-                            UnknownInternalServerError::new().into_response()
-                        }
+                        .layer(CatchPanicLayer::custom(
+                            |err: Box<dyn Any + Send + 'static>| -> Response<_> {
+                                error!("Service panicked: {}", format_panic(err));
+                                UnknownInternalServerError::new().into_response()
+                            },
                         ))
                         .layer(
                             TraceLayer::new_for_http()

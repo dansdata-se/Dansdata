@@ -8,6 +8,7 @@ use opentelemetry_sdk::{
     runtime::Tokio,
 };
 use opentelemetry_semantic_conventions::{attribute, SCHEMA_URL};
+use std::any::Any;
 use tracing::Level;
 use tracing_opentelemetry::{MetricsLayer, OpenTelemetryLayer};
 use tracing_subscriber::fmt::format::FmtSpan;
@@ -27,6 +28,16 @@ impl Drop for LoggingGuard {
         if let Err(err) = self.meter_provider.shutdown() {
             eprintln!("{err:?}");
         }
+    }
+}
+
+pub fn format_panic(err: Box<dyn Any + Send>) -> String {
+    if let Some(s) = err.downcast_ref::<String>() {
+        s.to_owned()
+    } else if let Some(s) = err.downcast_ref::<&str>() {
+        s.to_string()
+    } else {
+        "Panic info could not be obtained.".to_string()
     }
 }
 
@@ -96,7 +107,10 @@ fn resource() -> Resource {
                 format!(
                     "{} ({})",
                     built_info::PKG_VERSION,
-                    built_info::GIT_COMMIT_HASH_SHORT.expect("Failed to get git commit hash")
+                    built_info::GIT_COMMIT_HASH_SHORT
+                        .map(|x| x.to_string())
+                        .or_else(|| std::env::var("GIT_SHA").ok())
+                        .expect("Git commit hash should be available"),
                 ),
             ),
         ],

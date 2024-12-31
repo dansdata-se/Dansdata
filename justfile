@@ -2,10 +2,10 @@
 # Basic just configuration
 #################################################
 
-export GIT_SHA := `git rev-parse HEAD`
+export GIT_SHA := `git rev-parse --short HEAD`
 export GIT_REF := `git rev-parse --abbrev-ref HEAD`
 
-mod backstage "components/api/backstage/_.justfile"
+#mod backstage "components/api/backstage/_.justfile"
 
 [private]
 default: help

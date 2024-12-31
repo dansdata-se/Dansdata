@@ -1,0 +1,8 @@
+services:
+  db:
+    build:
+      context: ../../components/db
+      dockerfile: Dockerfile
+      tags:
+        - dansdata/db:dev
+    pull_policy: build
