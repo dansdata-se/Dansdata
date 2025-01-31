@@ -2,6 +2,13 @@
 
 This directory contains [Dansdata](https://dansdata.se)'s brand assets.
 
+## Font Reference
+
+| Role  | Family                                               |
+| ----- | ---------------------------------------------------- |
+| Brand | [Norican](https://fonts.google.com/specimen/Norican) |
+| Text  | [Nunito](https://fonts.google.com/specimen/Nunito)   |
+
 ## Color Reference
 
 | Color | Hex                                                              |
